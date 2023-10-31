@@ -1,0 +1,16 @@
+
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+li {
+    background-color: #3c5aa6;
+    border: solid #ffcb05 3px;
+    border-radius: 20px;
+    box-shadow: 10px 5px 5px #c7a008;
+    list-style-type: none;
+}
