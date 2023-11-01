@@ -16,14 +16,29 @@ async function getPokemon(){
             ulElement.appendChild(liElement);
             liElement.setAttribute("id",`"${element.name}"`);
             //console.log(element.name)
+            fetch(element.url)
+                .then((response)=>response.json())
+                .then ((pokemonData)=>{
+                    const imgUrl = pokemonData.sprites.front_default;
+                    //console.log(imgUrl);
+                    pokemonData.innerHTML += 
+                    `<li id=${element.name}>
+                    <h2>${element.name}</h2>
+                    <img class="poke-image" src= ${imgUrl}>
+                    </li>
+                    `;
+                    console.log(pokemonData)
+                })
+                .catch((error)=> console.log(error))
+
         });
-        data.results.forEach(async (element) => {
+        /* data.results.forEach(async (element) => {
             let responseImg = await fetch(element.url)
             let dataImg = await responseImg.json()
             let imgElement = document.createElement('img')
             imgElement.setAttribute ("src", dataImg.sprites.front_default)
-            //console.log("CL segundo fetch", dataImg.sprites.front_default)
-    });
+            console.log("CL segundo fetch", dataImg.sprites.front_default)
+    }); */
     
 
     }catch(error){console.log(error)}
